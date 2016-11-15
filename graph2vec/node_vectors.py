@@ -1,6 +1,6 @@
 __author__ = 'porky-chu'
 
-import cPickle
+import pickle as cPickle
 
 import theano
 import numpy as np

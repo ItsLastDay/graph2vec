@@ -6,8 +6,8 @@ import logging
 
 import numpy as np
 
-from node_vectors import NodeVectorModel
-import parser
+from .node_vectors import NodeVectorModel
+from . import parser
 
 
 class Graph2Vec(object):
@@ -68,12 +68,12 @@ class Graph2Vec(object):
 
         random.seed(seed)
         shuffled_idxes = np.arange(self.from_to_idxs.shape[0])
-        for epoch_idx in xrange(max_epochs):
+        for epoch_idx in range(max_epochs):
 
             random.shuffle(shuffled_idxes)
 
             cost = []
-            for obs_idx in xrange(0, len(self.inverse_degrees), batch_size):
+            for obs_idx in range(0, len(self.inverse_degrees), batch_size):
                 cost.append(self.model.train(self.from_to_idxs[shuffled_idxes[obs_idx:obs_idx + batch_size]],
                                           self.inverse_degrees[shuffled_idxes[obs_idx:obs_idx + batch_size]]))
 
